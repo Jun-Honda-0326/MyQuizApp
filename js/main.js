@@ -20,12 +20,14 @@
     // iを１ずつ減らしながら処理するfor文
     for (let i = arr.length - 1; i > 0; i--){
     const j = Math.floor(Math.random()* (i + 1)); // ランダムに選択する整数値
-    [arr[j], arr[i] = arr[i], arr[j]];
+    [arr[j], arr[i]] = [arr[i], arr[j]];
     }
     return arr;
   }
 
-  quizSet[currentNum].c.forEach(choice =>{
+  const shuffledChoices = shuffle([...quizSet[currentNum].c]);  //スプレッド演算子を使って配列のコピーを作成
+  console.log(quizSet[currentNum].c)
+  shuffledChoices.forEach(choice =>{
       const li = document.createElement('li');
       li.textContent = choice;
       choices.appendChild(li);
