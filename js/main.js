@@ -13,4 +13,11 @@
 
   let currentNum = 0;
 
+  question.textContent = quizSet[currentNum].q;
+
+  quizSet[currentNum].c.forEach(choice =>{
+      const li = document.createElement('li');
+      li.textContent = choice;
+      choices.appendChild(li);
+  });
 }
