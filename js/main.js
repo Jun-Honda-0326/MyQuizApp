@@ -15,6 +15,16 @@
 
   question.textContent = quizSet[currentNum].q;
 
+  function shuffle(arr){
+    
+    // iを１ずつ減らしながら処理するfor文
+    for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random()* (i + 1)); // ランダムに選択する整数値
+    [arr[j], arr[i] = arr[i], arr[j]];
+    }
+    return arr;
+  }
+
   quizSet[currentNum].c.forEach(choice =>{
       const li = document.createElement('li');
       li.textContent = choice;
