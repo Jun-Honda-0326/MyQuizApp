@@ -12,6 +12,7 @@
   ];
 
   let currentNum = 0;
+  let isAnswered;
 
  
 
@@ -26,6 +27,10 @@
   }
 
   function checkAnswer(li){
+    if (isAnswered === true) {
+        return;
+    }
+    isAnswered = true;
     if (li.textContent === quizSet[currentNum].c[0]){
       li.classList.add('correct')
     } else{
@@ -36,6 +41,7 @@
 
 
   function setQuiz(){
+    isAnswered = false;
     question.textContent = quizSet[currentNum].q;
     const shuffledChoices = shuffle([...quizSet[currentNum].c]);  //スプレッド演算子を使って配列のコピーを作成
     shuffledChoices.forEach(choice =>{
