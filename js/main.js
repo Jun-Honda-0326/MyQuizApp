@@ -13,7 +13,7 @@
 
   let currentNum = 0;
 
-  question.textContent = quizSet[currentNum].q;
+ 
 
   function shuffle(arr){
     
@@ -25,11 +25,29 @@
     return arr;
   }
 
-  const shuffledChoices = shuffle([...quizSet[currentNum].c]);  //スプレッド演算子を使って配列のコピーを作成
-  console.log(quizSet[currentNum].c)
-  shuffledChoices.forEach(choice =>{
-      const li = document.createElement('li');
-      li.textContent = choice;
-      choices.appendChild(li);
+  function checkAnswer(li){
+    if (li.textContent === quizSet[currentNum].c[0]){
+      console.log('correct');
+    } else{
+      console.log('wrong');
+    }
+  }
+
+
+
+  function setQuiz(){
+    question.textContent = quizSet[currentNum].q;
+    const shuffledChoices = shuffle([...quizSet[currentNum].c]);  //スプレッド演算子を使って配列のコピーを作成
+    shuffledChoices.forEach(choice =>{
+    const li = document.createElement('li');
+    li.textContent = choice;
+    li.addEventListener('click', () => {
+      checkAnswer(li)
+    });
+    choices.appendChild(li);
   });
+  }
+
+  setQuiz();
 }
+
