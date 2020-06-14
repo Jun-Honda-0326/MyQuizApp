@@ -16,7 +16,7 @@
  
 
   function shuffle(arr){
-    
+     
     // iを１ずつ減らしながら処理するfor文
     for (let i = arr.length - 1; i > 0; i--){
     const j = Math.floor(Math.random()* (i + 1)); // ランダムに選択する整数値
@@ -27,9 +27,9 @@
 
   function checkAnswer(li){
     if (li.textContent === quizSet[currentNum].c[0]){
-      console.log('correct');
+      li.classList.add('correct')
     } else{
-      console.log('wrong');
+      li.classList.add('wrong')
     }
   }
 
