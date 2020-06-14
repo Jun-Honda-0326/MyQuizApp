@@ -36,6 +36,8 @@
     } else{
       li.classList.add('wrong')
     }
+
+    btn.classList.remove('disabled')
   }
 
 
@@ -43,6 +45,11 @@
   function setQuiz(){
     isAnswered = false;
     question.textContent = quizSet[currentNum].q;
+      // 問題文を消去する処理
+    while(choices.firstChild){
+      choices.removeChild(choices.firstChild);
+    }
+
     const shuffledChoices = shuffle([...quizSet[currentNum].c]);  //スプレッド演算子を使って配列のコピーを作成
     shuffledChoices.forEach(choice =>{
     const li = document.createElement('li');
@@ -55,5 +62,11 @@
   }
 
   setQuiz();
+  
+  // ボタンをクリックしたら次の問題へ遷移する処理
+  btn.addEventListener('click', () => {
+      currentNum++;
+      setQuiz();
+  });
 }
 
