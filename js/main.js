@@ -59,14 +59,22 @@
     });
     choices.appendChild(li);
   });
+  // 最後の問題を解答し終わった後の処理
+  if (currentNum === quizSet.length-1){    //currentNumは０から始まっているため1を引く
+    btn.textContent = 'Show Score';
+  }
   }
 
   setQuiz();
   
   // ボタンをクリックしたら次の問題へ遷移する処理
   btn.addEventListener('click', () => {
-      currentNum++;
-      setQuiz();
+    if (btn.classList.contains('disabled')){
+      return;
+    }
+    btn.classList.add('disabled');
+    currentNum++;
+    setQuiz();
   });
 }
 
